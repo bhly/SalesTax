@@ -6,17 +6,19 @@ public class TaxDriver{
 
 	Scanner scan = new Scanner(System.in);
 	
-	Tax tax = new Tax(0,0);
+	Tax tax = new Tax("NB",0);
 	
 	System.out.print("Enter before-tax dollar amount: ");
 	System.out.println("");
 	
 	tax.setBase(scan.nextDouble());
 	
-	System.out.print("Enter province: ");
+	System.out.print("Enter province (ie. NB, MN, AB, etc.): ");
 	System.out.println("");
 	
-	tax.setRate(scan.nextDouble());
+	tax.setProvince(scan.next());
+	
+	tax.populate();
 	
 	System.out.println("Total tax: " + tax.calcTax(tax) + "\n" + 
 		"Total including tax: " + tax.calcTotal(tax));

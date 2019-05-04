@@ -1,39 +1,50 @@
-import java.util.Scanner;
+import java.util.Map;
+import java.util.HashMap;
 
 public class Tax{
 	
-	private double rate;
+	private String province;
 	private double base;
+	private double rate;
 	
-	private static final double AB = 0.5;
-	private static final double BC = 0.12;
-	private static final double MN = 0.13;
-	private static final double NB = 0.15;
-	private static final double NF = 0.15;
-	private static final double NWT = 0.05;
-	private static final double NS = 0.15;
-	private static final double NU = 0.05;
-	private static final double ON = 0.13;
-	private static final double PEI = 0.15;
-	private static final double QC = 0.14975;
-	private static final double SK = 0.11;
-	private static final double YK = 0.05;
+	private HashMap<String, Double> map; 
+      
+	public void populate(){
+		map = new HashMap<String, Double>(); 
+		map.put("AB", 0.05); 
+       map.put("BC", 0.12); 
+       map.put("MN", 0.13); 
+       map.put("NB", 0.15); 
+	   map.put("NF", 0.15); 
+	   map.put("NWT", 0.05); 
+	   map.put("NS", 0.15); 
+	   map.put("NU", 0.05); 
+	   map.put("ON", 0.13); 
+	   map.put("PEI", 0.15); 
+	   map.put("QC", 0.14975); 
+	   map.put("SK", 0.11); 
+	   map.put("YK", 0.05); 
+	}
 	
-	public Tax(double rate, double base){
-		this.rate = rate;
+	public Map<String, Double> getMap(){
+		return map;
+	}
+	
+	public Tax(String province, double base){
+		this.province = province;
 		this.base = base;
 	}
 	
-	public void setRate(double rate){
-		this.rate = rate;
+	public void setProvince(String province){
+		this.province = province;
 	}
 	
 	public void setBase(double base){
 		this.base = base;
 	}
 	
-	public double getRate(){
-		return rate;
+	public String getprovince(){
+		return province;
 	}
 	
 	public double getBase(){
@@ -41,12 +52,12 @@ public class Tax{
 	}
 	
 	public double calcTax(Tax tax){
+		rate = map.get(tax.province);
 		return tax.base * tax.rate;
 	}
 	
 	public double calcTotal(Tax tax){
+		rate = map.get(tax.province);
 		return tax.base *  tax.rate + tax.base;
 	}
-
-
 }
