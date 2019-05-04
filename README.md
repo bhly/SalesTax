@@ -1,2 +1,5 @@
 # SalesTax
-A simple Java program that accepts a dollar amount and province from the user and calculates the appropriate sales tax. 
+This program accepts a dollar amount and province from the user and calculates the appropriate sales tax. 
+
+A simple demonstration of one use for a HashMap. 
+
